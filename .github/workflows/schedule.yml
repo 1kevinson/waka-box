@@ -6,16 +6,14 @@ on:
 
   schedule:
     - cron: "* * * * *"
-
+      
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Install
-        run: npm ci
       - name: Update gist
-        run: node ./index.js
+        uses: matchai/waka-box@master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 9cb3c9f7e8714ce1dc78df3dad40547f
